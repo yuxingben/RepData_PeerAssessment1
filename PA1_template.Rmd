@@ -3,8 +3,8 @@ title: "Reproducible Research Project 1"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+```{r setup, include=TRUE}
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Loading and preprocessing the data
