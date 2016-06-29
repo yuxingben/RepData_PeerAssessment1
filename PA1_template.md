@@ -2,6 +2,7 @@
 
 
 
+
 ## Loading and preprocessing the data
 
 ###1. Unzip data to obtain the csv file.
@@ -42,24 +43,6 @@ summary(activity)
 
 ```r
 library(lubridate)
-```
-
-```
-## Warning: package 'lubridate' was built under R version 3.2.5
-```
-
-```
-## 
-## Attaching package: 'lubridate'
-```
-
-```
-## The following object is masked from 'package:base':
-## 
-##     date
-```
-
-```r
 activity$date <- ymd(activity$date)
 str(activity)
 ```
@@ -75,36 +58,6 @@ str(activity)
 
 ```r
 library(dplyr)
-```
-
-```
-## Warning: package 'dplyr' was built under R version 3.2.5
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:lubridate':
-## 
-##     intersect, setdiff, union
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-```r
 total_day <- activity %>% group_by(date) %>%summarise(total_steps=sum(steps,na.rm=TRUE)) %>% print
 ```
 
@@ -132,7 +85,7 @@ sub_day <- subset(total_day, total_steps > 0)
 hist(total_day$total_steps,breaks=40, main = "Histogram of Total Steps per Day", xlab = "Total steps per day")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+![](Figs/unnamed-chunk-5-1.png)<!-- -->
 
 ###3. Calculate and report the mean and median total number of steps taken per day
 
@@ -164,7 +117,7 @@ plot(x = daily_patterns$interval,y = daily_patterns$average,type = "l",
      ylab = "Average steps for given intervals")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+![](Figs/unnamed-chunk-7-1.png)<!-- -->
 
 ###2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -225,7 +178,7 @@ total_day_noNAs <- new_activity %>% group_by(date) %>% summarise(total_steps=sum
 hist(total_day_noNAs$total_steps,breaks=40, main = "Histogram of Total Steps per Day after inputation", xlab = "Total steps per day")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
+![](Figs/unnamed-chunk-12-1.png)<!-- -->
 
 ```r
 print(mean(total_day$total_steps))
@@ -294,6 +247,6 @@ library(lattice)
 xyplot(daily_patterns_new$average ~ daily_patterns_new$interval|daily_patterns_new$day, main="Average Steps per Day by Interval",xlab="Interval", ylab="Steps",layout=c(1,2), type="l")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
+![](Figs/unnamed-chunk-14-1.png)<!-- -->
 
 
